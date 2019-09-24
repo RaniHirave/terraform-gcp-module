@@ -9,7 +9,8 @@ It supports creating:
 Compatibility
     ->This module is meant for use with Terraform  0.10.3. 
 
-Then perform the following commands on the root folder:     
+Then perform the following commands on the root folder: 
+
     ->terraform init        : to get the plugins
     
     ->terraform validate    : to validate the syntax of the terraform files
