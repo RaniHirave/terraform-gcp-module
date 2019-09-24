@@ -2,6 +2,18 @@ terraform {
   required_version = ">= 0.10.3"
 }
 
+module "iam_binding" {
+  source = "./modules/iam-google"
+
+  projects = ["${var.project}"]
+
+  bindings = {
+    "roles/storage.admin" = [
+      "user:rani.hirave@cognologix.com",
+    ]
+  }
+}
+
 provider "google" {
   credentials = "${file("CREDENTIALS_FILE.json")}"
 }
