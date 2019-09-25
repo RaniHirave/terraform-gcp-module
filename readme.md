@@ -4,7 +4,8 @@ Author::
 
 Terraform Network Module
 
-    This modules makes it easy to set up a new VPC Network in GCP by defining your network and subnet ranges in a concise syntax.
+    This modules makes it easy to set up a new VPC Network in GCP by defining your
+    network and subnet ranges in a concise syntax.
 
 It supports creating:
 
