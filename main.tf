@@ -2,18 +2,6 @@ terraform {
   required_version = ">= 0.10.3"
 }
 
-module "iam_binding" {
-  source = "./modules/iam-google"
-
-  projects = ["${var.project}"]
-
-  bindings = {
-    "roles/storage.admin" = [
-      "user:rani.hirave@cognologix.com",
-    ]
-  }
-}
-
 provider "google" {
   credentials = "${file("CREDENTIALS_FILE.json")}"
 }
@@ -90,4 +78,30 @@ module "instance" {
   machine_type = "${var.machine_type}"
   image = "${var.image}"
   ssh-keys = "rhirave:${file("~/.ssh/id_rsa.pub")}"
+}
+
+module "gke-cluster" {
+  source = "./modules/gke-cluster"
+  project  = "${var.project}"
+  location = "${var.subnet_region}"
+  machine_type = "${var.machine_type}"
+  network = module.vpc.network_name
+  subnetwork = module.vpc.public_subnet_name
+
+  # Optional in case we have a default pool
+  node_pool = [
+    {
+      machine_type   = "${var.machine_type}"
+      disk_size_gb   = 10
+      node_count     = 3
+      min_node_count = 2
+      max_node_count = 4
+    },
+    {
+      disk_size_gb   = 10
+      node_count     = 2
+      min_node_count = 1
+      max_node_count = 3
+    },
+  ]
 }
