@@ -1,14 +1,14 @@
- Google Virtual Private Network (VPC) Creation
+# Google Virtual Private Network (VPC) Creation
    This example configures a single simple VPC inside of a project.
 
-This VPC has two subnets, and two routes
+## This VPC has two subnets, and two routes
 
-Inputs
+## Inputs
     Name                                                                type    default     required
     network_name	The name of the VPC network being created	        string	n/a	        yes
     project_id	    The project ID to host the network in	            string	n/a	        yes
 
-Outputs
+## Outputs
     Name	                Description
     network_name	        The name of the VPC being created
     network_self_link	    The URI of the VPC being created
