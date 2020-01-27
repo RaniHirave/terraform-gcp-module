@@ -1,5 +1,5 @@
 variable "project" {
-    default = "devops-practice-252409"
+    default = "test"
 }
 variable "env" {
     default = "dev"
