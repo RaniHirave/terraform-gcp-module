@@ -5,7 +5,7 @@ variable "env" {
     default = "dev"
 }
 variable "company" { 
-    default = "cglx"
+    default = "test"
 }
 
 # variable "credentials" {
